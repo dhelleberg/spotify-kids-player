@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/artistFragment">
+
+    <fragment
+        android:id="@+id/artistFragment"
+        android:name="de.dhelleberg.spotifykidsplayer.ui.artists.ArtistFragment"
+        android:label="fragment_artist"
+        tools:layout="@layout/artist_fragment" >
+        <action
+            android:id="@+id/action_artistFragment_to_albumFragment"
+            app:destination="@id/albumFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/albumFragment"
+        android:name="de.dhelleberg.spotifykidsplayer.ui.album.AlbumFragment"
+        android:label="album_fragment"
+        tools:layout="@layout/album_fragment" >
+        <argument
+            android:name="artistID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_albumFragment_to_playFragment"
+            app:destination="@id/playFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/playFragment"
+        android:name="de.dhelleberg.spotifykidsplayer.ui.play.PlayFragment"
+        android:label="play_fragment"
+        tools:layout="@layout/play_fragment" >
+        <argument
+            android:name="albumID"
+            android:defaultValue='""'
+            app:argType="string" />
+    </fragment>
+</navigation>

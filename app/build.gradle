@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs'
+
+def SPOTIFY_CLIENT_ID = '"' + SPOTIFY_CLIENT_ID+ '"' ?: '"Define SPOTIFY_CLIENT_ID property"';
+def SPOTIFY_CLIENT_SECRET = '"' + SPOTIFY_CLIENT_SECRET + '"' ?: '"Define SPOTIFY_CLIENT_SECRET property"';
+
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "de.dhelleberg.spotifykidsplayer"
+        minSdkVersion 25
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    buildToolsVersion '28.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            def version = variant.versionName
+            outputFileName = "SpotifyKidsPlayer-${version}.apk"
+        }
+    }
+}
+
+android.buildTypes.each {
+    it.buildConfigField 'String', 'SPOTIFY_CLIENT_ID', SPOTIFY_CLIENT_ID
+    it.buildConfigField 'String', 'SPOTIFY_CLIENT_SECRET', SPOTIFY_CLIENT_SECRET
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
+
+    implementation "android.arch.navigation:navigation-fragment-ktx:$rootProject.navigationVersion"
+    implementation "android.arch.navigation:navigation-ui-ktx:$rootProject.navigationVersion"
+
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    implementation 'com.adamratzman:spotify-api-kotlin:2.0.1'
+
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+
+    implementation 'org.koin:koin-android:1.0.2'
+    implementation 'org.koin:koin-android-viewmodel:1.0.2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
+    testImplementation 'junit:junit:4.12'
+
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
