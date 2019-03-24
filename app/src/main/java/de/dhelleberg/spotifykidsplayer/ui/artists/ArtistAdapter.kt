@@ -38,7 +38,8 @@ class ArtistAdapter(private val artists: List<Artist>,
         fun bind(artist: Artist, onClick:(Artist) -> Unit) {
             view.setOnClickListener {onClick(artist)}
             artistTitle.text = artist.name
-            Glide.with(fragment).load(artist.images[0].url).into(artistCover)
+            if(artist.images.isNotEmpty())
+                Glide.with(fragment).load(artist.images[0].url).into(artistCover)
         }
 
     }

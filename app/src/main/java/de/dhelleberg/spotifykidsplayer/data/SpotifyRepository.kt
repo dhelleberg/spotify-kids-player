@@ -54,10 +54,13 @@ class SpotifyRepositoryImpl(private val context : Context) : SpotifyRepository {
     var artistList: MutableList<Artist> = ArrayList()
 
     private val artistURIs = arrayOf(
-                "spotify:artist:1zo1vxkpoT8JMJYdHv2zsa",
-                "spotify:artist:4flLF0QDCVMtQCc7JJ94gt",
-                "spotify:artist:1z8ytficgBWsoYigwE2QVM",
-                "spotify:artist:3Mr28PUoMrOvS8KshvBXa8")
+                "spotify:artist:7zNPHpOB4uBduLjmEZzzpy", //Was ist was
+                "spotify:artist:0vLsqW05dyLvjuKKftAEGA", //Die ??? kids
+                "spotify:artist:5kfO0hrJ2B9B27G1fUbzVJ", //Robin Hood
+                //"spotify:artist:1zo1vxkpoT8JMJYdHv2zsa", //die reiter von Berk
+                //"spotify:artist:4flLF0QDCVMtQCc7JJ94gt", //Die wächter von Berk
+                "spotify:artist:1z8ytficgBWsoYigwE2QVM",  // Auf zu neuen Ufern
+                "spotify:artist:3Mr28PUoMrOvS8KshvBXa8") // Lasse Maja
 
     override fun getArtists(): List<Artist> {
         checkAndBlockUntilLogin()
