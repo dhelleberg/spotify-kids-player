@@ -54,9 +54,9 @@ class AlbumFragment : Fragment() {
     }
 
     private fun onListItemClicked(simpleAlbum: SimpleAlbum) {
-        Log.d(TAG, "clicked on artist ${simpleAlbum.uri}")
+        Log.d(TAG, "clicked on artist ${simpleAlbum.uri.uri}")
         NavHostFragment.findNavController(this)
-            .navigate(AlbumFragmentDirections.actionAlbumFragmentToPlayFragment().setAlbumID(simpleAlbum.id))
+            .navigate(AlbumFragmentDirections.actionAlbumFragmentToPlayFragment().setAlbumID(simpleAlbum.uri.uri))
     }
 
 
