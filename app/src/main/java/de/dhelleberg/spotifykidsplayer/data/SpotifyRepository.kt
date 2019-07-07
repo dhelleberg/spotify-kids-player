@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.adamratzman.spotify.main.SpotifyAPI
-import com.adamratzman.spotify.main.spotifyApi
-import com.adamratzman.spotify.utils.Artist
-import com.adamratzman.spotify.utils.LinkedResult
-import com.adamratzman.spotify.utils.SimpleAlbum
+import com.adamratzman.spotify.SpotifyAPI
+import com.adamratzman.spotify.models.Artist
+import com.adamratzman.spotify.models.PagingObject
+import com.adamratzman.spotify.models.SimpleAlbum
+import com.adamratzman.spotify.spotifyApi
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
@@ -24,7 +24,7 @@ import java.util.concurrent.Semaphore
 
 interface SpotifyRepository {
     fun getArtists(): List<Artist>
-    fun getAlbums(artistURI: String): LinkedResult<SimpleAlbum>
+    fun getAlbums(artistURI: String): PagingObject<SimpleAlbum>
     fun getSpotifyAppRemote(): SpotifyAppRemote
 }
 
@@ -78,7 +78,7 @@ class SpotifyRepositoryImpl(private val context : Context) : SpotifyRepository {
         return artistList
     }
 
-    override fun getAlbums(artistURI: String): LinkedResult<SimpleAlbum> {
+    override fun getAlbums(artistURI: String): PagingObject<SimpleAlbum> {
         checkAndBlockUntilLogin()
         return api.artists.getArtistAlbums(artistURI).complete()
     }

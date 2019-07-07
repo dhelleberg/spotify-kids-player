@@ -3,7 +3,7 @@ package de.dhelleberg.spotifykidsplayer.ui.artists
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.adamratzman.spotify.utils.Artist
+import com.adamratzman.spotify.models.Artist
 import de.dhelleberg.spotifykidsplayer.data.SpotifyRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

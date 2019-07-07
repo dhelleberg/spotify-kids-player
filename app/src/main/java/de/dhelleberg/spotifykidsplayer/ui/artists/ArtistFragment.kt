@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.adamratzman.spotify.utils.Artist
+import com.adamratzman.spotify.models.Artist
 import de.dhelleberg.spotifykidsplayer.R
 import kotlinx.android.synthetic.main.artist_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -52,7 +52,7 @@ class ArtistFragment : Fragment() {
     private fun onListItemClicked(artist: Artist) {
         Log.d(TAG, "clicked on artist ${artist.uri}")
         NavHostFragment.findNavController(this)
-            .navigate(ArtistFragmentDirections.actionArtistFragmentToAlbumFragment(artist.uri))
+            .navigate(ArtistFragmentDirections.actionArtistFragmentToAlbumFragment(artist.id))
     }
 
 

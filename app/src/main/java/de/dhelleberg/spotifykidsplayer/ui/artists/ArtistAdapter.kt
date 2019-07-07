@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.adamratzman.spotify.utils.Artist
+import com.adamratzman.spotify.models.Artist
 import com.bumptech.glide.Glide
 import de.dhelleberg.spotifykidsplayer.R
 

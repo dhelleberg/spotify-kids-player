@@ -7,14 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.adamratzman.spotify.utils.LinkedResult
-import com.adamratzman.spotify.utils.SimpleAlbum
+import com.adamratzman.spotify.models.PagingObject
+import com.adamratzman.spotify.models.SimpleAlbum
 import com.bumptech.glide.Glide
 import de.dhelleberg.spotifykidsplayer.R
 
-class AlbumAdapter(private val albums: LinkedResult<SimpleAlbum>,
-                          private val fragment: Fragment,
-                          private val onClick: (SimpleAlbum) -> Unit ) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
+class AlbumAdapter(private val albums: PagingObject<SimpleAlbum>,
+                   private val fragment: Fragment,
+                   private val onClick: (SimpleAlbum) -> Unit ) : RecyclerView.Adapter<AlbumAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return albums.items.size

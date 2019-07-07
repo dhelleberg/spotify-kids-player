@@ -10,8 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.adamratzman.spotify.utils.LinkedResult
-import com.adamratzman.spotify.utils.SimpleAlbum
+import com.adamratzman.spotify.models.PagingObject
+import com.adamratzman.spotify.models.SimpleAlbum
 import de.dhelleberg.spotifykidsplayer.R
 import kotlinx.android.synthetic.main.album_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -43,7 +43,7 @@ class AlbumFragment : Fragment() {
 
     }
 
-    private fun showAlbums(albumList: LinkedResult<SimpleAlbum>?) {
+    private fun showAlbums(albumList: PagingObject<SimpleAlbum>?) {
         if (albumList != null) {
             albumList.items.forEach {
                 Log.d(TAG, "album: ${it.name}")
@@ -56,7 +56,7 @@ class AlbumFragment : Fragment() {
     private fun onListItemClicked(simpleAlbum: SimpleAlbum) {
         Log.d(TAG, "clicked on artist ${simpleAlbum.uri}")
         NavHostFragment.findNavController(this)
-            .navigate(AlbumFragmentDirections.actionAlbumFragmentToPlayFragment().setAlbumID(simpleAlbum.uri))
+            .navigate(AlbumFragmentDirections.actionAlbumFragmentToPlayFragment().setAlbumID(simpleAlbum.id))
     }
 
 

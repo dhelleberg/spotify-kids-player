@@ -3,8 +3,8 @@ package de.dhelleberg.spotifykidsplayer.ui.album
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.adamratzman.spotify.utils.LinkedResult
-import com.adamratzman.spotify.utils.SimpleAlbum
+import com.adamratzman.spotify.models.PagingObject
+import com.adamratzman.spotify.models.SimpleAlbum
 import de.dhelleberg.spotifykidsplayer.data.SpotifyRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -13,9 +13,9 @@ import kotlinx.coroutines.launch
 
 class AlbumViewModel(private val spotifyRepository : SpotifyRepository) : ViewModel() {
 
-    private lateinit var albumResult: MutableLiveData<LinkedResult<SimpleAlbum>>
+    private lateinit var albumResult: MutableLiveData<PagingObject<SimpleAlbum>>
 
-    fun getAlbums(artistURI: String): LiveData<LinkedResult<SimpleAlbum>> {
+    fun getAlbums(artistURI: String): LiveData<PagingObject<SimpleAlbum>> {
         if (!::albumResult.isInitialized ) {
             albumResult = MutableLiveData()
         }
@@ -27,7 +27,7 @@ class AlbumViewModel(private val spotifyRepository : SpotifyRepository) : ViewMo
     }
 
 
-    private suspend fun loadAlbums(artistURI: String) : LinkedResult<SimpleAlbum> {
+    private suspend fun loadAlbums(artistURI: String) : PagingObject<SimpleAlbum> {
         return this.spotifyRepository.getAlbums(artistURI)
     }
 }

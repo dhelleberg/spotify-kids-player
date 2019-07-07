@@ -80,7 +80,7 @@ class PlayFragment : Fragment() {
                 }
             }
         }
-        play_track.text = playerState.track.name
+        play_track.text = playerState?.track?.name
     }
 
     private fun updatePlayerState(playerState: PlayerState) {
