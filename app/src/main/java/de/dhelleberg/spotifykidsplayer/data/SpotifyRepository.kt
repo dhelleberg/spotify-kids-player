@@ -60,7 +60,8 @@ class SpotifyRepositoryImpl(private val context : Context) : SpotifyRepository {
                 //"spotify:artist:1zo1vxkpoT8JMJYdHv2zsa", //die reiter von Berk
                 //"spotify:artist:4flLF0QDCVMtQCc7JJ94gt", //Die wächter von Berk
                 "spotify:artist:1z8ytficgBWsoYigwE2QVM",  // Auf zu neuen Ufern
-                "spotify:artist:3Mr28PUoMrOvS8KshvBXa8") // Lasse Maja
+                //"spotify:artist:3Mr28PUoMrOvS8KshvBXa8") // Lasse Maja
+                "spotify:artist:1hD52edfn6aNsK3fb5c2OT") // Fünf Freunde
 
     override fun getArtists(): List<Artist> {
         checkAndBlockUntilLogin()
@@ -80,7 +81,7 @@ class SpotifyRepositoryImpl(private val context : Context) : SpotifyRepository {
 
     override fun getAlbums(artistURI: String): PagingObject<SimpleAlbum> {
         checkAndBlockUntilLogin()
-        return api.artists.getArtistAlbums(artistURI).complete()
+        return api.artists.getArtistAlbums(artistURI,50,0).complete()
     }
 
 
